@@ -1,0 +1,80 @@
+/* MAIN CONTAINER STARTS*/
+    .container{
+        color: gold;
+        display: flex;
+        justify-content: space-between;
+        margin: 12px;
+        
+    }
+
+    .container > .logo:hover{
+        cursor: pointer;
+    }
+/* MAIN CONTAINER ENDS */
+
+/* LOGO SECTION START */
+
+.logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo-img>img{
+    width: 100px;
+}
+/* LOGO SECTION END */
+
+/* NAV BAR STARTS */
+
+.nav-items{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-items ul{
+
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-transform:uppercase
+}
+
+.nav-items > ul > li{
+    text-decoration: none; 
+    transition: all 0.3s ease-in;
+}
+
+.nav-items > ul > li:hover{
+    .line{
+      transform: scaleX(1);
+    }
+
+}
+
+.line
+{
+    position: a;
+    height: 0.4px;
+    background-color: gold;
+    transform: scaleX(0);
+    transform-origin:bottom left ;
+    transition: all 0.2s ease-in;
+}
+
+.nav-items > ul > li > a{
+    text-decoration: none; 
+    color: gold;
+}
+
+
+
+.nav-items > ul > li > a:hover{
+    transform :scale(1.5);
+}
+
+/* NAV BAR ENDS */
