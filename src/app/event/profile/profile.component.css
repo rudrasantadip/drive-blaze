@@ -1,6 +1,6 @@
 .container{
     position: absolute;
-    top: 20%;
+    top: 10%;
     left: 10%;
     width: 80%;
 }
@@ -44,36 +44,42 @@
   .cards{
     width: 80vw;
     height: 30vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
   }
 
   .card{
+    background: linear-gradient(to right, gold, aqua);
     width: 400px;
     margin-left: 6px;
     margin-right: 6px;
+    margin-top: 12px;
+    margin-bottom: 12px;
     text-align: center;
   }
 
+  .custom-card {
+    background-color: #f0f8ff; /* Replace with your desired background color */
+  }
+
   .section{
-    width: 800px;
+
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    height: 500px;
   }
 
 .card-button{
-    background: transparent;;
+    background: transparent;
     width: 200px;
     height: 50px;
     outline: none;
     border:none;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 22px;
+    font-style: italic;
     font-weight: 700;
-    color: blue;
+    color: black;
     transition: all 0.5s ease-in-out;
     cursor: pointer;
 }
@@ -83,7 +89,85 @@
 }
 
 
-  .section2{
- 
-  }
 
+
+
+
+.welcome{
+  font-size: 3rem;
+    font-weight: bold;
+    font-style: normal;
+    background: linear-gradient(45deg, gold, aqua);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    background-position: bottom left;
+    overflow: hidden;
+
+    transition: all 0.3s ease-in;
+}
+
+.user{
+  font-size: 3rem;
+  font-weight: bold;
+  font-style: normal;
+  background: linear-gradient(45deg, aqua, gold);
+  background-position: bottom right;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in;
+}
+
+.welcome:hover{
+  background-position: bottom right;
+  cursor: pointer;
+}
+
+.user:hover{
+  background-position: bottom left;
+  cursor: pointer;
+}
+
+.cards{
+ 
+}
+
+.list-items{
+  height: 100%;
+}
+
+.list-items >ul{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.raised-button {
+  width: 120px;
+  background-color: lightseagreen; /* Button background color */
+  color: white; /* Text color */
+  padding: 10px 20px; /* Padding inside the button */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 12px; /* Font size */
+  text-transform: uppercase; /* Uppercase text */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Raised shadow effect */
+  transition: all 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.raised-button:hover {
+  width: 200px;
+  font-size: 16px;
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.raised-button:active {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Reset shadow on click */
+  transform: translateY(0); /* Reset lift on click */
+}
