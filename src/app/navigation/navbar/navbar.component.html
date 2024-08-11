@@ -9,33 +9,9 @@
     </div>
     <nav class="nav-items">
         <ul>
-            <li>
-            <a href="">Schedule</a>
+            <li *ngFor="let route of getNavRoutes(1)">
+            <a [routerLink]="route.routerLink">{{route.name}}</a>
             <div class="line"></div>
-            </li>
-            <li>
-                <a href="">events</a>
-                <div class="line"></div>
-            </li>
-            <li>
-                <a href="">Workshops</a>
-                <div class="line"></div>
-            </li>
-            <li>
-                <a href="">Activities</a>
-                <div class="line"></div>
-            </li>
-            <li>
-                <a href="">Sponsors</a>
-                <div class="line"></div>
-            </li>
-            <li>
-                <a href="">Our Team</a>
-                <div class="line"></div>
-            </li>
-            <li>
-                <a href="">Contact Us</a>
-                <div class="line"></div>
             </li>
         </ul>
     </nav>

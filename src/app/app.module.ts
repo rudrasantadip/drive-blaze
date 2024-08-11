@@ -8,11 +8,14 @@ import { NavigationModule } from './navigation/navigation.module';
 import { HomeModule } from './home/home.module';
 import { EventModule } from './event/event.module';
 import { ContactModule } from './contact/contact.module';
+import { ScheduleModule } from './schedule/schedule.module';
+import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    VideoBackgroundComponent
+    VideoBackgroundComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,14 @@ import { ContactModule } from './contact/contact.module';
     NavigationModule,
     HomeModule,
     EventModule,
-    ContactModule
+    ContactModule,
+    ScheduleModule,
+
+    // Loader Module
+    NgxUiLoaderModule,
+    NgxUiLoaderRouterModule.forRoot(
+      {showForeground:true}
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]

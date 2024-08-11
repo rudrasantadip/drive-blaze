@@ -1,0 +1,39 @@
+<div class="main-container">
+  <div class="header">
+    <h1 style="color: gold">Register</h1>
+  </div>
+
+  <div class="form">
+    <form action="">
+     
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">
+                <i class="pi pi-user"></i>
+            </span>
+            <input pInputText placeholder="Username" />
+        </div>
+
+
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">
+                <i class="pi pi-lock"></i>
+            </span>
+            <input pInputText placeholder="Password" />
+        </div>
+
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">
+                <i class="pi pi-star-fill"></i>
+            </span>
+            <input value="Hack The Blaze 1.0" id="disabled-input" type="text" pInputText [disabled]="true" />
+        </div>
+
+        <button class="button-w">Register</button>
+
+        <div class="widgets">
+            <p-button (click)="goto('')" label="Forgot Password?" [link]="true" class="custom-button"></p-button>
+            <p-button (click)="goto('/events/login')" label="Already an user? Login" [link]="true" class="custom-button"></p-button>
+        </div>
+    </form>
+  </div>
+</div>

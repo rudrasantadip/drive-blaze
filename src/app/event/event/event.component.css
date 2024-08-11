@@ -1,0 +1,83 @@
+.container{
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+p-card {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+/* buttons */
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+
+.visit{
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    background: linear-gradient(to right, red 50%, blue 50%);
+    background-position: right bottom;
+    transition: all 0.3s ease-out;
+}
+
+.visit:hover{
+    background-position: left bottom;
+}
+
+
+.animated-button {
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    background: linear-gradient(120deg,  black 50%,gold 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: background-position 0.5s ease-out;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .animated-button:hover {
+    background-position: left bottom;
+    color: white;
+  }
+
+  .animated-button:hover {
+    background-position: left bottom;
+  }
+
+
+
+.hovered{
+    width: 200px;
+}
+
+
+ng-template{
+    text-align: center;
+}
+

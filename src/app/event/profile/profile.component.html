@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="header">
+    <h1>
+      Welcome, User
+      <i class="pi pi-user" style="font-size: 2rem"></i>
+    </h1>
+
+    <div class="menu">
+      <div class="widgets" *ngIf="teamExists">
+        <button class="hover-effect">Create Team</button>
+        <button class="hover-effect">Join Team</button>
+      </div>
+
+      <div class="cards">
+        <div class="section">
+          <div class="card">
+            <p-card>
+                <button class="card-button">My Application</button>
+            </p-card>
+          </div>
+        </div>
+
+        <div class="section section2">
+          <div class="card">
+            <p-card>
+                <button class="card-button">Overview</button>
+            </p-card>
+          </div>
+          <div class="card">
+            <p-card>
+                <button class="card-button">Prizes</button>
+            </p-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

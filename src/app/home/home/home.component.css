@@ -1,3 +1,184 @@
 h1{
-    color: white
+  color: gold;
+  text-align: center;
+}
+
+.container{
+    margin-top: 12px;
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    width: 80%;
+    height: 600px;
+    transform: translate(-60%,-50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sub-heading{
+    margin-top: 15px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.sub-heading>h3{
+    margin-top: 5px;
+    margin-left: 0;
+    margin-left: 0;
+    margin-bottom: 0;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+/* Countdown */
+
+.countdown{
+    z-index: -1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.box{
+    text-align: center;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.counter{
+    background-color: #2f363e;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    font-size: 35px;
+}
+
+#clock1{
+    position: absolute;
+    top: 50%;
+    left: 0;
+}
+
+#clock2{
+    position: absolute;
+    top: 50%;
+    right: 0;
+}
+
+.clock{
+    opacity: 0.8;
+    
+    transform: translateY(-50%);
+    width: 260px;
+    height: 260px;
+    background: #2f363e;
+    border-radius: 50%;
+    box-shadow: 10px 50px 70px rgba(3, 3, 67, 0.25),
+    inset 5px 5px 10px rgba(56, 18, 226, 0.5)
+    inset 5px 5px 20px rgba(133, 12, 231, 0.2)
+    inset -5px -5px 15px rgba(24, 17, 225, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.clock::before{
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #2f363e;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    z-index: 1000;
+}
+
+#clock2::before{
+    content: '';
+    border:transparent;
+}
+
+.clock span{
+    position: absolute;
+    inset: 15px;
+    color: #fff;
+    text-align: center;
+    transform: rotate(calc(30deg*var(--i)));
+}
+
+.clock span b{
+    font-size: 1em; 
+    display: inline-block;
+    transform: rotate(calc(30deg*var(--i)));
+}
+
+.clock > .circle{
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.clock > .circle2{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    z-index: 10;
+}
+
+.clock > .circle3{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    z-index: 8;
+}
+
+.circle:nth-child(1) i{
+    width: 2px;
+}
+
+.circle:nth-child(2) i{
+    width: 6px;
+}
+
+.circle i{
+    position: absolute;
+    width: 6px;
+    height: 50%;
+    background: var(--clr);
+    opacity: 0.75;
+    transform-origin: bottom;
+    transform: scaleY(0.5);
+    z-index: 9;
+}
+
+.circle::before
+{
+    content: '';
+    position: absolute;
+    top: -8.5px;
+    width: 15px;
+    height:  15px;
+    background: var(--clr);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--clr),
+    0 0 60px var(--clr);
+
+
+
 }

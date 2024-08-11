@@ -1,1 +1,76 @@
-<h1>home works!</h1>
+<div class="container">
+    <div class="main-heading">
+        <h1>Experience The Future <br><span style="color: aqua;">Today</span></h1>
+    </div>
+
+    <div class="clock" id="clock1">
+
+        <div class="circle" [ngStyle]="{ transform: secondRotation}" style="--clr:#04fc43">
+            <i></i>
+        </div>
+
+        <div class="circle circle2" [ngStyle]="{ transform: minuteRotation }" style="--clr:#fee800">
+            <i></i>
+        </div>
+
+        <div class="circle circle3" [ngStyle]="{ transform: hourRotation }"  style="--clr:#ff2972">
+            <i></i>
+        </div>
+
+         <span style="--i:1;"><b>1</b></span>
+         <span style="--i:2;"><b>2</b></span>
+         <span style="--i:3;"><b>3</b></span>
+         <span style="--i:4;"><b>4</b></span>
+         <span style="--i:5;"><b>5</b></span>
+         <span style="--i:6;"><b>6</b></span>
+         <span style="--i:7;"><b>7</b></span>
+         <span style="--i:8;"><b>8</b></span>
+         <span style="--i:9;"><b>9</b></span>
+         <span style="--i:10;"><b>10</b></span>
+         <span style="--i:11;"><b>11</b></span>
+         <span style="--i:12;"><b>12</b></span>
+    </div>
+
+    <div class="clock" id="clock2">
+
+        <h3 style="font-size: 35px;">{{timeString}}</h3>
+
+        <div class="circle" style="--clr:#04fc43">
+          
+        </div>
+
+        <div class="circle circle2"  style="--clr:yellow">
+           
+        </div>
+
+        <div class="circle circle3"  style="--clr:red">
+           
+        </div>
+
+    </div>
+
+    <div class="countdown">
+        <div class="box">
+            <div class="counter">
+                <h3>{{countdown.days}}</h3>
+            </div>
+            Days
+        </div>
+        <div class="box">
+            <div class="counter">
+                <h3>{{countdown.hours}}</h3>
+            </div>
+            Hours
+        </div>
+        <div class="box">
+            <div class="counter">
+                <h3>{{countdown.minutes}}</h3>
+            </div>
+            Minutes
+        </div>
+    </div>
+    <div class="sub-heading">
+        <h3>28 <sup>th</sup> & 29 <sup>th</sup> September 2024</h3>
+        <h3>University of Engineering & Management</h3>
+    </div>
+</div>
