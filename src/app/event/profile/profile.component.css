@@ -131,7 +131,8 @@
 }
 
 .cards{
- 
+ display: flex;
+ justify-content: space-around;
 }
 
 .list-items{
@@ -170,4 +171,148 @@
 .raised-button:active {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Reset shadow on click */
   transform: translateY(0); /* Reset lift on click */
+}
+
+
+.display{
+  width: 800px;
+  height: 600px;
+  margin: 6px;
+  overflow-y: auto;
+}
+
+.display::-webkit-scrollbar {
+  width: 8px; /* Width of the vertical scrollbar */
+}
+
+
+/* input form */
+.p-inputgroup{
+  margin-top: 12px;
+  margin-left: 6px;
+  margin-right: 6px;
+  width: 250px;
+}
+
+.team-info{
+  display: flex;
+}
+
+.display>form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.display > form > h2{
+  text-align: center;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.display > form >.team-members{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.team-members>div{
+  margin-left: 6px;
+  margin-right: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-members>div>label{
+  font-style: normal;
+}
+
+.file-input-container {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* Style the file label */
+.file-label {
+  margin-right: 10px;
+  font-weight: normal;
+  font-size: 16px;
+  font-style: normal;
+}
+
+/* Style the file input */
+.file-input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.file-upload{
+  margin-top: 16px;
+}
+
+.submit-button{
+  margin-top: 16px;
+}
+
+/* Center the table on the page */
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f3f4f6;
+}
+
+/* Basic table styling */
+.styled-table {
+  border-collapse: collapse;
+  font-size: 16px;
+  min-width: 600px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
+  opacity: 0.9;
+}
+
+/* Table header styling */
+.styled-table thead tr {
+  background-color: #009879;
+  color: black;
+  text-align: left;
+}
+
+/* Table cell styling */
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+  color:black;
+}
+
+/* Alternating row colors */
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:nth-of-type(odd) {
+  background-color: #ffffff;
+}
+
+/* Highlight row on hover */
+.styled-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Highlight the active row */
+.styled-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
 }

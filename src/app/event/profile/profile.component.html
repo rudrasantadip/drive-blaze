@@ -1,12 +1,8 @@
 <div class="container">
   <div class="header">
     <h1>
-      <span class="welcome">
-        Welcome
-      </span>
-      <span class="user">
-        User
-      </span>
+      <span class="welcome"> Welcome </span>
+      <span class="user"> User </span>
       <i class="pi pi-user" style="font-size: 2rem"></i>
     </h1>
 
@@ -17,19 +13,242 @@
       </div>
 
       <div class="cards">
+        <div class="list-items">
+          <ul>
+            <li>
+              <button class="raised-button" (click)="applicationSubmit()">
+                Submit Application
+              </button>
+            </li>
+            <li>
+              <button class="raised-button" (click)="showtimeline()">
+                Timeline
+              </button>
+            </li>
+            <li>
+              <button class="raised-button" (click)="showoverView()">
+                OverView
+              </button>
+            </li>
+            <li>
+              <button class="raised-button" (click)="showTeamMembers()">
+                Team Members
+              </button>
+            </li>
+            <li>
+              <button
+                class="raised-button"
+                style="background-color: lightsalmon"
+              >
+                Logout
+              </button>
+            </li>
+          </ul>
+        </div>
 
+        <div class="display">
+          <!-- Application submission -->
+          <form class="submit-application" *ngIf="submitApplication">
+            <!-- Team info -->
+            <div class="team-info">
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">
+                  <i class="pi pi-user"></i>
+                </span>
+                <input pInputText placeholder="Leader Name" />
+              </div>
 
-       <div class="list-items">
-        <ul>
-          <li><button class="raised-button">Submit Application</button></li>
-          <li><button class="raised-button">Timeline</button></li>
-          <li><button class="raised-button">OverView</button></li>
-          <li><button class="raised-button">Team Members</button></li>
-          <li><button class="raised-button" style="background-color: lightsalmon;">Logout</button></li>
-        </ul>
-       </div>
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">
+                  <i class="pi pi-users"></i>
+                </span>
+                <input pInputText placeholder="Team Name" />
+              </div>
 
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">
+                  <i class="pi pi-key"></i>
+                </span>
+                <input pInputText placeholder="Team Code" />
+              </div>
+            </div>
 
+            <!-- Member info -->
+
+            <h2>Team Members</h2>
+
+            <div class="team-members">
+              <div class="">
+                <p-radioButton
+                  name="pizza"
+                  value="Cheese"
+                  [(ngModel)]="ingredient"
+                  inputId="ingredient1"
+                ></p-radioButton>
+                <label for="ingredient1" class="ml-2">Joe</label>
+              </div>
+
+              <div class="">
+                <p-radioButton
+                  name="pizza"
+                  value="Mushroom"
+                  [(ngModel)]="ingredient"
+                  inputId="ingredient2"
+                ></p-radioButton>
+                <label for="ingredient2" class="ml-2">Sam</label>
+              </div>
+
+              <div class="">
+                <p-radioButton
+                  name="pizza"
+                  value="Pepper"
+                  [(ngModel)]="ingredient"
+                  inputId="ingredient3"
+                ></p-radioButton>
+                <label for="ingredient3" class="ml-2">Ned</label>
+              </div>
+
+              <div class="">
+                <p-radioButton
+                  name="pizza"
+                  value="Onion"
+                  [(ngModel)]="ingredient"
+                  inputId="ingredient4"
+                ></p-radioButton>
+                <label for="ingredient4" class="ml-2">Harry</label>
+              </div>
+            </div>
+
+            <!-- File upload -->
+            <div class="file-upload">
+              <div class="file-input-container">
+                <label class="file-label" for="file">Choose file:</label>
+                <input
+                  class="file-input"
+                  type="file"
+                  id="file"
+                  (change)="onUpload($event)"
+                  required
+                />
+              </div>
+            </div>
+
+            <button class="submit-button raised-button">
+              Submit Application
+            </button>
+          </form>
+
+          <!-- Timeline starts-->
+
+          <p-timeline *ngIf="timeline"
+            [value]="events"
+            align="alternate"
+            styleClass="customized-timeline"
+          >
+            <ng-template pTemplate="marker" let-event>
+              <span
+                class="custom-marker shadow-2"
+                [style.backgroundColor]="event.color"
+              >
+                <i [ngClass]="event.icon"></i>
+              </span>
+            </ng-template>
+            <ng-template pTemplate="content" let-event>
+              <p-card [header]="event.status" [subheader]="event.date">
+                <img
+                  *ngIf="event.image"
+                  [src]="
+                    'https://primefaces.org/cdn/primeng/images/demo/product/' +
+                    event.image
+                  "
+                  [alt]="event.name"
+                  width="200"
+                  class="shadow-2"
+                />
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Inventore sed consequuntur error repudiandae numquam deserunt
+                  quisquam repellat libero asperiores earum nam nobis, culpa
+                  ratione quam perferendis esse, cupiditate neque quas!
+                </p>
+                <button
+                  pButton
+                  label="Read more"
+                  class="p-button-text"
+                ></button>
+              </p-card>
+            </ng-template>
+          </p-timeline>
+          <!-- Tineline ends -->
+
+          <!-- Team members -->
+          <div class="team-member" *ngIf="teammembers">
+            <table class="styled-table">
+              <thead>
+                <tr>
+                  <th>MemberId</th>
+                  <th>Name</th>
+                  <th>user id</th>
+                  <th>Role</th>
+                  <th>Add</th>
+                  <th>Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>John Doe</td>
+                  <td>john.doe@example.com</td>
+                  <td>Admin</td>
+                  <td>
+                    <p-button icon="pi pi-plus" severity="info"></p-button>
+                  </td>
+                  <td>
+                    <p-button icon="pi pi-times" severity="danger"></p-button>
+                  </td>
+                </tr>
+                <tr class="active-row">
+                  <td>2</td>
+                  <td>Jane Smith</td>
+                  <td>jane.smith@example.com</td>
+                  <td>User</td>
+                  <td>
+                    <p-button icon="pi pi-plus" severity="info"></p-button>
+                  </td>
+                  <td>
+                    <p-button icon="pi pi-times" severity="danger"></p-button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Robert Brown</td>
+                  <td>robert.brown@example.com</td>
+                  <td>Moderator</td>
+                  <td>
+                    <p-button icon="pi pi-plus" severity="info"></p-button>
+                  </td>
+                  <td>
+                    <p-button icon="pi pi-times" severity="danger"></p-button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Emily White</td>
+                  <td>emily.white@example.com</td>
+                  <td>User</td>
+                  <td>
+                    <p-button icon="pi pi-plus" severity="info"></p-button>
+                  </td>
+                  <td>
+                    <p-button icon="pi pi-times" severity="danger"></p-button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!--  -->
+        </div>
       </div>
     </div>
   </div>

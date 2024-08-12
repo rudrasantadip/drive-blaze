@@ -9,6 +9,10 @@ import { TabViewModule } from 'primeng/tabview';
 import { TimelineModule } from 'primeng/timeline';
 import { InputTextModule } from 'primeng/inputtext';
 import { PanelMenuModule } from 'primeng/panelmenu';
+import { ListboxModule } from 'primeng/listbox';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { FileUploadModule } from 'primeng/fileupload';
+import { ToastModule } from 'primeng/toast';
 
 
 import { EventComponent } from './event/event.component';
@@ -18,6 +22,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { ProfileComponent } from './profile/profile.component';
+import { TableModule } from 'primeng/table';
 
 
 
@@ -44,7 +49,11 @@ import { ProfileComponent } from './profile/profile.component';
     TimelineModule,
     InputTextModule,
     PanelMenuModule,
-    
+    ListboxModule,
+    RadioButtonModule,
+    FileUploadModule,
+    ToastModule,
+    TableModule
 
     
   ],
