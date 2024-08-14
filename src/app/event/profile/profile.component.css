@@ -185,6 +185,37 @@
   width: 8px; /* Width of the vertical scrollbar */
 }
 
+/* Team Creation CSS */
+.create-team , .join-team{
+  margin-top: 6px;
+  width: 500px;
+  height: 500px;
+}
+
+.create-team>form ,  .join-team > form{
+  text-align: center;
+}
+
+.user-info{
+  display: flex;
+  align-items: center;
+}
+
+.help-info{
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+
+  font-style: normal;
+  font-weight: normal;
+}
+
+.help-info>i{
+  font-size: 18px;
+  margin-right: 12px;
+}
 
 /* input form */
 .p-inputgroup{
@@ -315,4 +346,13 @@
 .styled-table tbody tr.active-row {
   font-weight: bold;
   color: #009879;
+}
+
+
+/* menu */
+.menu{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }

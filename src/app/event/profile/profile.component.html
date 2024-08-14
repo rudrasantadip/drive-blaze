@@ -8,11 +8,113 @@
 
     <div class="menu">
       <div class="widgets" *ngIf="teamExists">
-        <button class="hover-effect">Create Team</button>
-        <button class="hover-effect">Join Team</button>
+        <button class="hover-effect" (click)="showCreateTeam()">
+          Create Team
+        </button>
+        <button class="hover-effect" (click)="showJoinTeam()">Join Team</button>
       </div>
 
-      <div class="cards">
+      <div class="join-team" *ngIf="joinTeam">
+        <form>
+          <!-- User info -->
+          <div class="user-info">
+            <div class="p-inputgroup">
+              <span class="p-inputgroup-addon">
+                <i class="pi pi-user"></i>
+              </span>
+              <input
+                [(ngModel)]="teamJoin.fullName"
+                name="fullname"
+                pInputText
+                placeholder="Full Name"
+              />
+            </div>
+
+            <div class="p-inputgroup">
+              <span class="p-inputgroup-addon">
+                <i class="pi pi-users"></i>
+              </span>
+              <input
+                [(ngModel)]="teamJoin.teamCode"
+                name="teamcode"
+                pInputText
+                placeholder="Team Code"
+              />
+            </div>
+          </div>
+          <!-- User info end -->
+
+          <span class="help-info">
+            <i class="pi pi-question-circle"></i>
+            <p>
+              You will be automatically designated as a
+              <strong>Member</strong> when you Join a team
+            </p>
+          </span>
+
+          <button
+            (click)="onTeamJoin()"
+            style="text-align: center"
+            class="raised-button"
+            [disabled]="teamJoin.fullName==''
+            || teamJoin.teamCode==''"
+          >
+            Join
+          </button>
+        </form>
+      </div>
+
+      <div class="create-team" *ngIf="createTeam">
+        <form>
+          <!-- User info -->
+          <div class="user-info">
+            <div class="p-inputgroup">
+              <span class="p-inputgroup-addon">
+                <i class="pi pi-user"></i>
+              </span>
+              <input
+                [(ngModel)]="teamCreate.fullName"
+                name="fullname"
+                pInputText
+                placeholder="Full Name"
+              />
+            </div>
+
+            <div class="p-inputgroup">
+              <span class="p-inputgroup-addon">
+                <i class="pi pi-users"></i>
+              </span>
+              <input
+                [(ngModel)]="teamCreate.teamName"
+                name="teamcreate"
+                pInputText
+                placeholder="Team Name"
+              />
+            </div>
+          </div>
+          <!-- User info end -->
+
+          <span class="help-info">
+            <i class="pi pi-question-circle"></i>
+            <p>
+              You will be automatically designated as a
+              <strong>Leader</strong> when you create a team
+            </p>
+          </span>
+
+          <button
+            (click)="onTeamCreate()"
+            [disabled]="teamCreate.fullName == '' || teamCreate.teamName == ''"
+            style="text-align: center"
+            class="raised-button"
+          >
+            Create
+          </button>
+        </form>
+      </div>
+
+      <!-- Submission section -->
+      <div class="cards" *ngIf="!teamExists">
         <div class="list-items">
           <ul>
             <li>
@@ -140,7 +242,8 @@
 
           <!-- Timeline starts-->
 
-          <p-timeline *ngIf="timeline"
+          <p-timeline
+            *ngIf="timeline"
             [value]="events"
             align="alternate"
             styleClass="customized-timeline"

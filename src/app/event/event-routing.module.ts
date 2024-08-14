@@ -8,6 +8,7 @@ import { HackathonComponent } from './hackathon/hackathon.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
+import { sessionGuard } from '../global/guards/session.guard';
 
 
 
@@ -26,7 +27,7 @@ export const routes: Routes = [
     path:'login',component:LoginComponent
   },
   {
-    path:'profile',component:ProfileComponent
+    path:'profile',component:ProfileComponent,canActivate:[sessionGuard]
   }
 ];
 

@@ -1,7 +1,12 @@
+
+// Angular modules
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { EventRoutingModule } from './event-routing.module';
+import {HttpClientModule} from '@angular/common/http'
+
+
 import {ButtonModule} from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { SplitterModule } from 'primeng/splitter';
@@ -13,6 +18,7 @@ import { ListboxModule } from 'primeng/listbox';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ToastModule } from 'primeng/toast';
+
 
 
 import { EventComponent } from './event/event.component';
@@ -39,6 +45,7 @@ import { TableModule } from 'primeng/table';
   imports: [
     CommonModule,
     FormsModule,
+    HttpClientModule,
 
 
     // prime ng modules

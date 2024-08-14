@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { SessionService } from 'src/app/global/services/session.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,15 @@ export class LoginComponent {
   }
 
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private authService:AuthService,
+    private sessionService:SessionService
+  ) 
+  {
+
+  }
+
   goto(url: string) {
     this.router.navigate([url]);
   }
@@ -23,8 +33,22 @@ export class LoginComponent {
   //login function
   login()
   {
-    console.log(this.formData);
-    // this.router.navigate(['/events/profile']);
+    this.authService.login(this.formData.userName,this.formData.passWord,'USER')
+    .subscribe(
+    {
+      next:(response)=>{
+        if(response.message=='success')
+        {
+          localStorage.setItem('username',this.formData.userName);
+          this.sessionService.updateStatus(true);
+          this.goto('/events/profile');
+        }
+      },
+      error:(err)=>{
+        
+      }
+    }      
+    )
   }
 
   //function to validate the password
