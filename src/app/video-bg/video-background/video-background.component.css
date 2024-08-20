@@ -10,6 +10,7 @@
   /* Video styling */
   #background-video {
     position: absolute;
+    filter: blur(10px);
     top: 50%;
     left: 50%;
     min-width: 100%;

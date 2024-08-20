@@ -1,0 +1,54 @@
+.registration-form {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    max-height: 80vh; /* Set a maximum height relative to viewport height */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+
+  
+.registration-form::-webkit-scrollbar {
+    width: 2px;
+  }
+  
+  
+  .registration-form h2 {
+    text-align: center;
+    color: #fff;
+  }
+  
+  .registration-form label {
+    color: #fff;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .registration-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+  }
+  
+  .registration-form button {
+    width: 100%;
+    padding: 10px;
+    background: #28a745;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .registration-form button[disabled] {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  
