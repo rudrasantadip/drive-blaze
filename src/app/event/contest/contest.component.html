@@ -1,0 +1,12 @@
+<div class="event-details-container">
+    <div class="event" *ngFor="let event of events">
+      <img [src]="event.image" alt="{{ event.title }}">
+      <div class="event-info">
+        <h3>{{ event.title }}</h3>
+        <p>{{ event.date }}</p>
+        <p>{{ event.venue }}</p>
+        <p>{{ event.description }}</p>
+    </div>
+    <button (click)="register(event.link)">Go to Register</button>
+    </div>
+  </div>

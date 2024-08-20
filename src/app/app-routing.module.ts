@@ -31,7 +31,28 @@ const routes: Routes = [
     path:'contact',
     loadChildren:()=>import('./contact/contact.module').then(m=>m.ContactModule)
   },
- 
+  {
+    path:'tech-talks',
+    loadChildren:()=>import('./tech-talk/tech-talk.module').then(m=>m.TechTalkModule)
+  },
+  {
+    path:'tech-titan-techdown',
+    loadChildren:()=>import('./techtitantechdown/techtitantechdown.module').then(m=>m.TechtitantechdownModule)
+  },
+  {
+    path:'tech-photography-contest',
+    loadChildren:()=>import('./techphotographycontest/techphotographycontest.module').then(m=>m.TechphotographycontestModule)
+  },
+  ,
+  {
+    path:'yukti-yagna',
+    loadChildren:()=>import('./yuktiyagna/yuktiyagna.module').then(m=>m.YuktiyagnaModule)
+  },
+  ,
+  {
+    path:'web-dev-challange',
+    loadChildren:()=>import('./webdevchallange/webdevchallange.module').then(m=>m.WebdevchallangeModule)
+  },
   {
     path:'',
     redirectTo:'home',

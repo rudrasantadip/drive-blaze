@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { SessionService } from 'src/app/global/services/session.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  providers:[MessageService]
 })
 export class LoginComponent {
   //structure to hold the  form data
@@ -20,7 +22,8 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private authService:AuthService,
-    private sessionService:SessionService
+    private sessionService:SessionService,
+    private messageService:MessageService
   ) 
   {
 
@@ -35,19 +38,17 @@ export class LoginComponent {
   {
     this.authService.login(this.formData.userName,this.formData.passWord,'USER')
     .subscribe(
-    {
-      next:(response)=>{
-        if(response.message=='success')
+      (response)=>{
+        if(response.message=='success' && response.status==true)
         {
           localStorage.setItem('username',this.formData.userName);
           this.sessionService.updateStatus(true);
           this.goto('/events/profile');
         }
-      },
-      error:(err)=>{
-        
-      }
-    }      
+        else{
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: response.message })
+        }
+      }     
     )
   }
 

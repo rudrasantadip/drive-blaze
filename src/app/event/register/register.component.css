@@ -62,3 +62,58 @@
     color: #ff5733; /* Replace with your desired color */
   }
   
+
+  .glass-button {
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Semi-transparent border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px 20px; /* Padding */
+    color: white; /* Text color */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    -webkit-backdrop-filter: blur(10px); /* Apply blur effect for Safari */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-transform: uppercase; /* Uppercase text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    margin-left: 12px;
+  }
+  
+  .glass-button:hover {
+    background: rgba(255, 255, 255, 0.3); /* Slightly less transparent on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+  }
+  
+
+.otp{
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+  .otp-container {
+    display: flex;
+    justify-content: space-between;
+    width: 200px; /* Adjust width as needed */
+  }
+  
+  .otp-input {
+    width: 30px;
+    height: 40px;
+    text-align: center;
+    font-size: 24px;
+  }
+
+  .buttons{
+    margin-top: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .buttons > button{
+    font-size: 10px;
+    width: 150px;
+  }

@@ -1,0 +1,114 @@
+/* Apply a full-height background to the body */
+
+  /* Container styling for registration form */
+  .register-container {
+    max-width: 600px;
+    max-height: 80vh; /* Set max-height for scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  
+  .register-container::-webkit-scrollbar {
+    width: 2px;
+  }
+  
+  /* Styling for each step */
+  .step {
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  button[disabled] {
+    background-color: #999;
+    cursor: not-allowed;
+  }
+  
+
+  .glass-button {
+    display: block;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    outline: none;
+  }
+  
+  .glass-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Shining animation */
+  .glass-button::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.2) 100%);
+    transform: rotate(30deg);
+    transition: all 0.6s ease-in-out;
+    pointer-events: none;
+  }
+  
+  .glass-button:hover::before {
+    top: 0;
+    left: 100%;
+  }
+  

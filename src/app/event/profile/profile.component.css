@@ -1,113 +1,107 @@
-.container{
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    width: 80%;
+.container {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
 }
 
-.header>h1{
-    text-align: center;
-    font-style: normal;
+.header > h1 {
+  text-align: center;
+  font-style: normal;
 }
 
-.widgets{
-    text-align: center;
+.widgets {
+  text-align: center;
 }
 
-.widgets>button{
-    font-size: 16px;
-    margin-left: 6px;
-    margin-right: 6px;
-    font-weight: bold;
-    width: 200px;
-    height: 50px;
-    border: none;
-    outline: none;
+.widgets > button {
+  font-size: 16px;
+  margin-left: 6px;
+  margin-right: 6px;
+  font-weight: bold;
+  width: 200px;
+  height: 50px;
+  border: none;
+  outline: none;
 }
 
 .hover-effect {
-    background: linear-gradient(to right, gold, aqua);
-    background-size: 200% 100%;
-    background-size: 200% 100%; /* Double the background size */
-    background-position: right bottom; /* Start position of the background */
-    transition: background-position 0.5s ease-in-out; /* Smooth transition */
-    color: white;
-    text-align: center;
-    font-size: 18px;
-  }
-
-  .hover-effect:hover {
-    background-position: left bottom; /* End position of the background on hover */
-    cursor: pointer;
-  }
-
-  .cards{
-    width: 80vw;
-    height: 30vh;
-  }
-
-  .card{
-    background: linear-gradient(to right, gold, aqua);
-    width: 400px;
-    margin-left: 6px;
-    margin-right: 6px;
-    margin-top: 12px;
-    margin-bottom: 12px;
-    text-align: center;
-  }
-
-  .custom-card {
-    background-color: #f0f8ff; /* Replace with your desired background color */
-  }
-
-  .section{
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    height: 500px;
-  }
-
-.card-button{
-    background: transparent;
-    width: 200px;
-    height: 50px;
-    outline: none;
-    border:none;
-    border-radius: 10px;
-    font-size: 22px;
-    font-style: italic;
-    font-weight: 700;
-    color: black;
-    transition: all 0.5s ease-in-out;
-    cursor: pointer;
+  background: linear-gradient(to right, gold, aqua);
+  background-size: 200% 100%;
+  background-size: 200% 100%; /* Double the background size */
+  background-position: right bottom; /* Start position of the background */
+  transition: background-position 0.5s ease-in-out; /* Smooth transition */
+  color: white;
+  text-align: center;
+  font-size: 18px;
 }
 
-.card-button:hover{
-    background-color: gainsboro;
+.hover-effect:hover {
+  background-position: left bottom; /* End position of the background on hover */
+  cursor: pointer;
 }
 
+.cards {
+  width: 80vw;
+  height: 30vh;
+}
 
+.card {
+  background: linear-gradient(to right, gold, aqua);
+  width: 400px;
+  margin-left: 6px;
+  margin-right: 6px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  text-align: center;
+}
 
+.custom-card {
+  background-color: #f0f8ff; /* Replace with your desired background color */
+}
 
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 500px;
+}
 
+.card-button {
+  background: transparent;
+  width: 200px;
+  height: 50px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 700;
+  color: black;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
 
-.welcome{
+.card-button:hover {
+  background-color: gainsboro;
+}
+
+.welcome {
   font-size: 3rem;
-    font-weight: bold;
-    font-style: normal;
-    background: linear-gradient(45deg, gold, aqua);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    position: relative;
-    background-position: bottom left;
-    overflow: hidden;
+  font-weight: bold;
+  font-style: normal;
+  background: linear-gradient(45deg, gold, aqua);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  background-position: bottom left;
+  overflow: hidden;
 
-    transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
 }
 
-.user{
+.user {
   font-size: 3rem;
   font-weight: bold;
   font-style: normal;
@@ -120,26 +114,26 @@
   transition: all 0.3s ease-in;
 }
 
-.welcome:hover{
+.welcome:hover {
   background-position: bottom right;
   cursor: pointer;
 }
 
-.user:hover{
+.user:hover {
   background-position: bottom left;
   cursor: pointer;
 }
 
-.cards{
- display: flex;
- justify-content: space-around;
+.cards {
+  display: flex;
+  justify-content: space-around;
 }
 
-.list-items{
+.list-items {
   height: 100%;
 }
 
-.list-items >ul{
+.list-items > ul {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -173,8 +167,7 @@
   transform: translateY(0); /* Reset lift on click */
 }
 
-
-.display{
+.display {
   width: 800px;
   height: 600px;
   margin: 6px;
@@ -186,22 +179,24 @@
 }
 
 /* Team Creation CSS */
-.create-team , .join-team{
+.create-team,
+.join-team {
   margin-top: 6px;
   width: 500px;
   height: 500px;
 }
 
-.create-team>form ,  .join-team > form{
+.create-team > form,
+.join-team > form {
   text-align: center;
 }
 
-.user-info{
+.user-info {
   display: flex;
   align-items: center;
 }
 
-.help-info{
+.help-info {
   margin-top: 16px;
   display: flex;
   align-items: center;
@@ -212,43 +207,43 @@
   font-weight: normal;
 }
 
-.help-info>i{
+.help-info > i {
   font-size: 18px;
   margin-right: 12px;
 }
 
 /* input form */
-.p-inputgroup{
+.p-inputgroup {
   margin-top: 12px;
   margin-left: 6px;
   margin-right: 6px;
-  width: 250px;
+  /* width: 280px; */
 }
 
-.team-info{
+.team-info {
   display: flex;
 }
 
-.display>form{
+.display > form {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: nowrap;
 }
 
-.display > form > h2{
+.display > form > h2 {
   text-align: center;
   font-style: normal;
   font-weight: normal;
 }
 
-.display > form >.team-members{
+.display > form > .team-members {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.team-members>div{
+.team-members > div {
   margin-left: 6px;
   margin-right: 6px;
   display: flex;
@@ -256,7 +251,7 @@
   align-items: center;
 }
 
-.team-members>div>label{
+.team-members > div > label {
   font-style: normal;
 }
 
@@ -281,11 +276,11 @@
   border-radius: 5px;
 }
 
-.file-upload{
+.file-upload {
   margin-top: 16px;
 }
 
-.submit-button{
+.submit-button {
   margin-top: 16px;
 }
 
@@ -310,6 +305,28 @@
   opacity: 0.9;
 }
 
+.team-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-information > span {
+  font-style: normal;
+  font-weight: normal;
+  margin-top: 12px;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+/* Team member styling */
+.team-information {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /* Table header styling */
 .styled-table thead tr {
   background-color: #009879;
@@ -321,7 +338,7 @@
 .styled-table th,
 .styled-table td {
   padding: 12px 15px;
-  color:black;
+  color: black;
 }
 
 /* Alternating row colors */
@@ -348,11 +365,68 @@
   color: #009879;
 }
 
-
 /* menu */
-.menu{
+.menu {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+
+.over-view {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
+  backdrop-filter: blur(10px); /* This is where the magic happens */
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Optional border to enhance the glass effect */
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
+}
+
+.over-view > ul > li {
+  text-align: justify;
+  margin-top: 6px;
+}
+
+.logout {
+  margin-left: 12px;
+  transition: all 0.5s ease-in;
+}
+.logout:hover {
+  color: red;
+  cursor: pointer;
+}
+
+
+/* glass table css */
+.glass-table {
+  width: 80%;
+  max-width: 600px;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+  backdrop-filter: blur(10px); /* Blurred background */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Optional border */
+  overflow: hidden; /* Ensures rounded corners are visible */
+}
+
+.glass-table th, .glass-table td {
+  padding: 15px;
+  text-align: left;
+  color: white; /* Text color */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-table th {
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.2); /* Slightly more opaque for headers */
+}
+
+.glass-table tr:last-child td {
+  border-bottom: none; /* Remove bottom border on last row */
 }

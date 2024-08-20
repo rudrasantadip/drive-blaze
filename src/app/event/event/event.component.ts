@@ -12,8 +12,8 @@ export class EventComponent {
 
   constructor(private router:Router){}
 
-  gotoHackathon()
+  goto(routerlink:string)
   {
-    this.router.navigate(['events/hackathon']);
+    this.router.navigate([routerlink]);
   }
 }

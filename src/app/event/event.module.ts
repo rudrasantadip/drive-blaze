@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { EventRoutingModule } from './event-routing.module';
 import {HttpClientModule} from '@angular/common/http'
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 import {ButtonModule} from 'primeng/button';
 import { CardModule } from 'primeng/card';
@@ -29,6 +29,8 @@ import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { ProfileComponent } from './profile/profile.component';
 import { TableModule } from 'primeng/table';
+import { ContestComponent } from './contest/contest.component';
+import { EventRegisterComponent } from './event-register/event-register.component';
 
 
 
@@ -40,14 +42,16 @@ import { TableModule } from 'primeng/table';
     HackathonComponent,
     RegisterComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    ContestComponent,
+    EventRegisterComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     HttpClientModule,
-
-
+    ReactiveFormsModule,
+    
     // prime ng modules
     CardModule,
     ButtonModule,
@@ -60,7 +64,8 @@ import { TableModule } from 'primeng/table';
     RadioButtonModule,
     FileUploadModule,
     ToastModule,
-    TableModule
+    TableModule,
+
 
     
   ],

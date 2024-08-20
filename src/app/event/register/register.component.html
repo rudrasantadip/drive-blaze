@@ -5,7 +5,7 @@
 
   <div class="form">
     <form >
-     
+        <p-toast></p-toast>
         <div class="p-inputgroup">
             <span class="p-inputgroup-addon">
                 <i class="pi pi-user"></i>
@@ -27,8 +27,19 @@
             pInputText 
             type="password"
             name="passWord"
-            placeholder="Password" />
+            placeholder="Password" />  
         </div>
+
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">
+                <i class="pi pi-address-book"></i>
+            </span>
+            <input
+            [(ngModel)]="formData.mobile"
+             pInputText 
+             placeholder="Mobile Number" 
+             name="mobile"/>
+        </div>  
 
         <div class="p-inputgroup">
             <span class="p-inputgroup-addon">

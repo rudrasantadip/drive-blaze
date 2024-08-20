@@ -2,17 +2,23 @@
    
 }
 
+app-video-background{
+  display: flex;
+  flex-direction: column;
+}
+
 .body{
     width: 100%;
+    height: 100%;
+    flex-direction: column-reverse;
 }
 
 /* MAIN TAG CSS */
 
 main{
-    margin: 20px;
-    padding: 20px;
     display: flex;
     flex-direction: row;
+    padding: 20px;
     height: 500px;
 }
 
@@ -160,4 +166,14 @@ main{
     0% {
       transform: scale(1);
     }
+  }
+
+  /* Footer */
+
+
+  .footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
   }

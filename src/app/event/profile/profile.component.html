@@ -2,12 +2,12 @@
   <div class="header">
     <h1>
       <span class="welcome"> Welcome </span>
-      <span class="user"> User </span>
-      <i class="pi pi-user" style="font-size: 2rem"></i>
+      <span class="user"> {{userName?userName:'User'}} </span>
+      <i (click)="logout()" class="pi pi-power-off logout" style="font-size: 2rem;margin-left: 6px;"></i>
     </h1>
 
     <div class="menu">
-      <div class="widgets" *ngIf="teamExists">
+      <div class="widgets" *ngIf="!teamExists">
         <button class="hover-effect" (click)="showCreateTeam()">
           Create Team
         </button>
@@ -114,7 +114,7 @@
       </div>
 
       <!-- Submission section -->
-      <div class="cards" *ngIf="!teamExists">
+      <div class="cards" *ngIf="teamExists">
         <div class="list-items">
           <ul>
             <li>
@@ -139,6 +139,7 @@
             </li>
             <li>
               <button
+                (click)="logout()"
                 class="raised-button"
                 style="background-color: lightsalmon"
               >
@@ -149,78 +150,68 @@
         </div>
 
         <div class="display">
+          <p-toast></p-toast>
           <!-- Application submission -->
-          <form class="submit-application" *ngIf="submitApplication">
+          <form (ngSubmit)="onSubmit()"  
+          id="submit-application"
+          class="submit-application" 
+          enctype="multipart/form-data"
+          *ngIf="submitApplication">
             <!-- Team info -->
             <div class="team-info">
               <div class="p-inputgroup">
                 <span class="p-inputgroup-addon">
                   <i class="pi pi-user"></i>
                 </span>
-                <input pInputText placeholder="Leader Name" />
+                <input 
+                name="leadername"
+                pInputText 
+                placeholder="Leader Name" 
+                [(ngModel)]="application.leaderName"
+                />
               </div>
 
               <div class="p-inputgroup">
                 <span class="p-inputgroup-addon">
                   <i class="pi pi-users"></i>
                 </span>
-                <input pInputText placeholder="Team Name" />
+                <input 
+                name="teamname"
+                pInputText 
+                placeholder="Team Name" 
+                [(ngModel)]="application.teamName"
+                />
               </div>
 
               <div class="p-inputgroup">
                 <span class="p-inputgroup-addon">
                   <i class="pi pi-key"></i>
                 </span>
-                <input pInputText placeholder="Team Code" />
+                <input 
+                name="teamcode"
+                pInputText 
+                placeholder="Team Code" 
+                [(ngModel)]="application.teamCode"
+                />
+              </div>
+
+              
+            </div>
+
+            <div class="team-info">
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">
+                  <i class="pi pi-key"></i>
+                </span>
+                <input 
+                name="collegename"
+                [(ngModel)]="application.collegeName"
+                pInputText 
+                placeholder="College/University Name" />
               </div>
             </div>
 
             <!-- Member info -->
-
-            <h2>Team Members</h2>
-
-            <div class="team-members">
-              <div class="">
-                <p-radioButton
-                  name="pizza"
-                  value="Cheese"
-                  [(ngModel)]="ingredient"
-                  inputId="ingredient1"
-                ></p-radioButton>
-                <label for="ingredient1" class="ml-2">Joe</label>
-              </div>
-
-              <div class="">
-                <p-radioButton
-                  name="pizza"
-                  value="Mushroom"
-                  [(ngModel)]="ingredient"
-                  inputId="ingredient2"
-                ></p-radioButton>
-                <label for="ingredient2" class="ml-2">Sam</label>
-              </div>
-
-              <div class="">
-                <p-radioButton
-                  name="pizza"
-                  value="Pepper"
-                  [(ngModel)]="ingredient"
-                  inputId="ingredient3"
-                ></p-radioButton>
-                <label for="ingredient3" class="ml-2">Ned</label>
-              </div>
-
-              <div class="">
-                <p-radioButton
-                  name="pizza"
-                  value="Onion"
-                  [(ngModel)]="ingredient"
-                  inputId="ingredient4"
-                ></p-radioButton>
-                <label for="ingredient4" class="ml-2">Harry</label>
-              </div>
-            </div>
-
             <!-- File upload -->
             <div class="file-upload">
               <div class="file-input-container">
@@ -235,7 +226,12 @@
               </div>
             </div>
 
-            <button class="submit-button raised-button">
+            <button
+            [disabled]="application.leaderName==''
+            || application.collegeName=='' || application.teamName=='' 
+            || application.teamCode==''"
+            type="submit"
+             class="submit-button raised-button">
               Submit Application
             </button>
           </form>
@@ -269,10 +265,7 @@
                   class="shadow-2"
                 />
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Inventore sed consequuntur error repudiandae numquam deserunt
-                  quisquam repellat libero asperiores earum nam nobis, culpa
-                  ratione quam perferendis esse, cupiditate neque quas!
+                 
                 </p>
                 <button
                   pButton
@@ -286,71 +279,78 @@
 
           <!-- Team members -->
           <div class="team-member" *ngIf="teammembers">
-            <table class="styled-table">
+            <table class="glass-table">
               <thead>
                 <tr>
                   <th>MemberId</th>
                   <th>Name</th>
                   <th>user id</th>
-                  <th>Role</th>
-                  <th>Add</th>
+                  <th>Designation</th>
                   <th>Remove</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>John Doe</td>
-                  <td>john.doe@example.com</td>
-                  <td>Admin</td>
+                <tr *ngFor="let member of team.members">
+                  <td>{{member.memberId}}</td>
+                  <td>{{member.memberName}}</td>
+                  <td>{{member.username}}</td>
+                  <td>{{member.memberDesignation}}</td>
                   <td>
-                    <p-button icon="pi pi-plus" severity="info"></p-button>
-                  </td>
-                  <td>
-                    <p-button icon="pi pi-times" severity="danger"></p-button>
+                    <p-button icon="pi pi-times" [disabled]="memberDesignation=='Member'" (click)="removeMember(member)" severity="danger"></p-button>
                   </td>
                 </tr>
-                <tr class="active-row">
-                  <td>2</td>
-                  <td>Jane Smith</td>
-                  <td>jane.smith@example.com</td>
-                  <td>User</td>
-                  <td>
-                    <p-button icon="pi pi-plus" severity="info"></p-button>
-                  </td>
-                  <td>
-                    <p-button icon="pi pi-times" severity="danger"></p-button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Robert Brown</td>
-                  <td>robert.brown@example.com</td>
-                  <td>Moderator</td>
-                  <td>
-                    <p-button icon="pi pi-plus" severity="info"></p-button>
-                  </td>
-                  <td>
-                    <p-button icon="pi pi-times" severity="danger"></p-button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Emily White</td>
-                  <td>emily.white@example.com</td>
-                  <td>User</td>
-                  <td>
-                    <p-button icon="pi pi-plus" severity="info"></p-button>
-                  </td>
-                  <td>
-                    <p-button icon="pi pi-times" severity="danger"></p-button>
-                  </td>
-                </tr>
+                
               </tbody>
             </table>
+
+            <div class="team-information">
+              <span>Team Code: {{team.teamCode}}</span>
+              <span>Team Name: Drive Blaze</span>
+              <span>You can have {{3-team.members.length}} member(s) more</span>
+            </div>
           </div>
 
-          <!--  -->
+          <!-- Over View -->
+
+          <div class="over-view" *ngIf="overview">
+            <h2>Guidelines for participants</h2>
+            <ul>
+
+              <li>
+                Every Team must have a proper identifiable name.
+              </li>
+
+              <li>
+                Every Team must contain a minimum of 1 and a maxmimum of 3 members.
+              </li>
+
+              <li>
+                The leader of the team will be responsible for adding or removing members from the team.
+              </li>
+
+              <li>
+                Every team will get a chance to submit their idea presentation only once, therefore please be careful.
+              </li>
+
+              <li>
+                Registrations for the hackathon will begin from 20th August 2024.
+              </li>
+
+              <li>
+                To join a team you must have the proper team code, for that given team.
+              </li>
+
+              <li>
+                Team Code will be available to members, who can therefore share it with others.
+              </li>
+
+              <li>
+                Team Leader shall recieve a teamcode upon creating a team.
+              </li>
+            </ul>
+       
+
+          </div>
         </div>
       </div>
     </div>

@@ -29,13 +29,14 @@ export class AuthService {
   }
 
   //function to register
-  register(username:string,password:string,role:string):Observable<any>
+  register(username:string,password:string,mobileNo:string,role:string):Observable<any>
   {
     return this.http.post<any>(`${this.apiUrl}/register`,
       {
         'username':username,
         'password':password,
-         'role':'role'
+        'mobileNo':mobileNo,
+        'role':'USER'
       })
       .pipe(catchError(this.handleError));
   }

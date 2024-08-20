@@ -1,48 +1,42 @@
 <!-- app.component.html -->
-<ngx-ui-loader
-[fgsTemplate]="foregroundSpinner">
-
-</ngx-ui-loader>
+<ngx-ui-loader [fgsTemplate]="foregroundSpinner"> </ngx-ui-loader>
 
 <!-- Spinner foreground -->
 <ng-template #foregroundSpinner>
-	<div class="sk-chase">
-		<div class="sk-chase-dot"></div>
-		<div class="sk-chase-dot"></div>
-		<div class="sk-chase-dot"></div>
-		<div class="sk-chase-dot"></div>
-		<div class="sk-chase-dot"></div>
-		<div class="sk-chase-dot"></div>
-	</div>
+  <div class="sk-chase">
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+  </div>
 </ng-template>
-
 
 <!-- Background Spinner -->
 <ng-template #backgroundSpinner>
-	<div class="la-ball-clip-rotate-multiple la-2x">
-		<div></div>
-		<div></div>
-	</div>
+  <div class="la-ball-clip-rotate-multiple la-2x">
+    <div></div>
+    <div></div>
+  </div>
 </ng-template>
 
 <app-video-background>
-    <app-navbar></app-navbar>
-
-    <main>
-        <div class="route-point">
-            <div class="golden-circle" #circle></div>
-            <div class="golden-circle" #circle></div>
-            <div class="golden-circle" #circle></div>
-            <div class="golden-circle" #circle></div>
-            <div class="golden-circle" #circle></div>
-            <div class="golden-circle" #circle></div>
-            <div class="golden-circle" #circle></div>
-            <div class="golden-circle" #circle></div>
-        </div>
-
-        <div class="body">
-            <router-outlet></router-outlet>
-        </div>
-    </main>
-
+  <app-navbar></app-navbar>
+  <main>
+    <div class="route-point">
+      <div class="golden-circle" #circle></div>
+      <div class="golden-circle" #circle></div>
+      <div class="golden-circle" #circle></div>
+      <div class="golden-circle" #circle></div>
+      <div class="golden-circle" #circle></div>
+      <div class="golden-circle" #circle></div>
+      <div class="golden-circle" #circle></div>
+      <div class="golden-circle" #circle></div>
+    </div>
+    <div class="body">
+      <router-outlet></router-outlet>
+    </div>
+</main>
 </app-video-background>
+<app-footer></app-footer>
