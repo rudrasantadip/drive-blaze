@@ -1,5 +1,5 @@
 <div class="registration-form">
-    <h2>Event Registration</h2>
+    <h2>Event Registration : Yukti Yagna</h2>
   
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
       <div class="team-info">
@@ -10,19 +10,19 @@
           <div *ngFor="let member of members.controls; let i = index" [formGroupName]="i">
             <h3>Member {{ i + 1 }}</h3>
   
-            <label for="fullName">Full Name</label>
+            <label for="fullName">Full Name <span>*</span></label>
             <input id="fullName" formControlName="fullName" type="text" placeholder="Enter full name" />
   
-            <label for="collegeName">College Name</label>
+            <label for="collegeName">College Name <span>*</span></label>
             <input id="collegeName" formControlName="collegeName" type="text" placeholder="Enter college name" />
   
-            <label for="emailId">Email ID</label>
+            <label for="emailId">Email ID <span>*</span></label>
             <input id="emailId" formControlName="emailId" type="email" placeholder="Enter email ID" />
   
-            <label for="mobileNumber">Mobile Number</label>
+            <label for="mobileNumber">Mobile Number <span>*</span></label>
             <input id="mobileNumber" formControlName="mobileNumber" type="tel" placeholder="Enter mobile number" />
   
-            <label for="enrollmentNumber">Enrollment Number</label>
+            <label for="enrollmentNumber">Enrollment Number <span>*</span></label>
             <input id="enrollmentNumber" formControlName="enrollmentNumber" type="text" placeholder="Enter enrollment number" />
           </div>
         </div>

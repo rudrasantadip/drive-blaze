@@ -3,7 +3,7 @@ import { TeamService } from '../services/team.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Member, Team } from 'src/app/dtos/teamsDto';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 interface EventItem {
   status?: string;
@@ -17,16 +17,17 @@ interface EventItem {
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
-  providers: [MessageService]
+  providers: [ConfirmationService, MessageService],
 })
 export class ProfileComponent implements OnInit, OnDestroy {
-
   //variable to store username
   userName: string;
-  memberDesignation:string;
+  memberDesignation: string;
   // subscribtions
   private subscription: Subscription;
-  private teamSubscription: Subscription;
+
+  // Variable to hold the file
+  fileUrl: string | ArrayBuffer | null = null;
 
   // form to create a team;
   createButtonDisabled: boolean = true;
@@ -53,9 +54,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
   //variable to check if a team exists
   teamExists: boolean = false;
 
-  selectedCity!: any;
-  ingredient: any;
-
   //variable to hold the selected file
   selectedFile: File;
 
@@ -70,13 +68,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
   // team creation section
   createTeam: boolean = false;
   joinTeam: boolean = false;
+  isIdeaSubmitted: boolean = false;
 
   //team variable
   team: Team;
 
-  constructor(private teamService: TeamService, 
+  constructor(
+    private teamService: TeamService,
     private router: Router,
-    private messageService: MessageService) {
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService
+  ) {
     this.events = [
       {
         status: 'Registrations Begin',
@@ -150,29 +152,25 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   //method to call when component is created
   ngOnInit() {
-    this.getTeamByCode();
-
+    this.getTeamByUserName();
     this.userName = localStorage.getItem('username');
-
     //function to check if the user has a team
     this.subscription = this.teamService.hasaTeam(this.userName).subscribe(
-      (response) => 
-      {
+      (response) => {
         if (response.status == true) {
           this.teamExists = true;
         }
       }
-     
-  //Assign Values
-  );
+      //Assign Values
+    );
 
-   //function to retrieve member designation
-   this.teamService.getMemberDesignation(this.userName)
-   .subscribe(
-    (response)=>{
-      this.memberDesignation=response.message;
-    }
-   )
+    // function to get if the application is submitted
+    //function to retrieve member designation
+    this.teamService
+      .getMemberDesignation(this.userName)
+      .subscribe((response) => {
+        this.memberDesignation = response.message;
+      });
   }
 
   // method to call when component is destroyed
@@ -188,7 +186,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
   //submit application
   onSubmit() {
     if (!this.selectedFile) {
-     this.messageService.add({ severity: 'warn', summary: 'Ward', detail: 'Please enter a file' });
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Ward',
+        detail: 'Please enter a file',
+      });
     } else {
       let formData = new FormData();
       formData.append('file', this.selectedFile, this.selectedFile?.name);
@@ -196,29 +198,34 @@ export class ProfileComponent implements OnInit, OnDestroy {
       formData.append('teamName', this.application.teamName);
       formData.append('instituteName', this.application.collegeName);
       formData.append('teamCode', this.application.teamCode);
-      formData.append('username',this.userName);
+      formData.append('username', this.userName);
 
       this.teamService.submitApplication(formData).subscribe((response) => {
-        if(response.status==true)
-        {
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Idea Submitted Successfully' });
-          formData=new FormData();
+        if (response.status == true) {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Idea Submitted Successfully',
+          });
+          formData = new FormData();
           this.resetForm();
-        }
-        else{
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Some error occured' });
+        } else {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: response.message,
+          });
+          this.resetForm();
         }
       });
     }
   }
 
-
   // reset form
-  resetForm()
-  {
+  resetForm() {
     (document.getElementById('submit-application') as HTMLFormElement).reset(); //reset controls
     (document.querySelector('input') as HTMLInputElement).value = '';
-    this.selectedFile=null;    
+    this.selectedFile = null;
   }
 
   // show event
@@ -249,40 +256,65 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.timeline = false;
     this.overview = false;
     this.teammembers = !this.teammembers;
-
-    if (this.teammembers == true) {
-      this.getTeamByCode();
-    }
   }
   //function to fetch team information
-  getTeamByCode() {
+  getTeamByUserName() {
     this.teamService
-      .getTeamByCode(localStorage.getItem('teamcode'))
+      .getTeamByUserName(localStorage.getItem('username'))
       .subscribe((response) => {
         this.team = response;
+        this.isIdeaSubmitted = this.team.applicationSubmitted;
+
+        // retrieve the idea if it is available
+        this.teamService.getIdeaFile(this.team.teamCode).subscribe((blob) => {
+          const pdfBlob = new Blob([blob], { type: 'application/pdf' });
+          this.fileUrl = URL.createObjectURL(pdfBlob);
+        });
       });
   }
 
   // function to remove a member
-  removeMember(member: Member) 
-  {
-    this.teamService.removeMember(
-      localStorage.getItem('username')
-      ,member.username,
-      this.team.teamCode
-    )
-    .subscribe(
-      (response)=>{
-        if(response.message=='success')
-        {
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: member.memberName+' has been removed' });
-          this.getTeamByCode();
-        }
-      }
-    )
+  removeMember(member: Member, event: Event) {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Are you sure that you want to proceed?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        //api call from here to remove member
+        this.teamService
+          .removeMember(
+            localStorage.getItem('username'),
+            member.username,
+            this.team.teamCode
+          )
+          .subscribe((response) => {
+            if (response.message == 'success') {
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: member.memberName + ' has been removed',
+              });
+            }
+          });
+      },
+      reject: () => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Rejected',
+          detail: 'You have cancelled the process',
+        });
+      },
+    });
   }
 
-
+  // function to check status of the application
+  checkApplicationStatus() {
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success',
+      detail: 'Your application is under review by our team',
+    });
+  }
 
   // functiont to logout
   logout() {

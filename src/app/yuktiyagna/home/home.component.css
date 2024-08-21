@@ -9,7 +9,6 @@
     max-height: 80vh; /* Set a maximum height relative to viewport height */
     overflow-y: auto; /* Enable vertical scrolling */
   }
-
   
 .registration-form::-webkit-scrollbar {
     width: 2px;
@@ -27,6 +26,10 @@
     margin-bottom: 5px;
   }
   
+  .registration-form label span{
+    color: red;
+  }
+  
   .registration-form input {
     width: 100%;
     padding: 10px;
@@ -35,6 +38,7 @@
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.3);
     color: #fff;
+    font-size: 12px;
   }
   
   .registration-form button {
@@ -52,3 +56,7 @@
     cursor: not-allowed;
   }
   
+
+  .members > h3{
+    font-size: 16px;
+  }

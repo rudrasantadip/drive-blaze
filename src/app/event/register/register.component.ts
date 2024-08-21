@@ -99,9 +99,16 @@ export class RegisterComponent {
         'USER'
       )
       .subscribe((response) => {
-        if (response.message == 'success') {
+        if (response.message == 'success') 
+        {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Your details has been successfully submitted please wait for confirmation from team',
+          });
           this.goto('/events/login');
-        } else {
+        }
+         else {
           this.messageService.add({
             severity: 'error',
             summary: 'Error',

@@ -3,6 +3,9 @@ export interface Team{
     teamName:string;
     teamCode:string;
     members:Member[];
+    leaderName:string;
+    applicationSubmitted:boolean;
+    ideaFile:Blob
     event:any;
 }
 

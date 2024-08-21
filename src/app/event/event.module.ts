@@ -18,15 +18,16 @@ import { ListboxModule } from 'primeng/listbox';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ToastModule } from 'primeng/toast';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
 
 
+import { AppRoutingModule } from '../app-routing.module';
 import { EventComponent } from './event/event.component';
 import { WorkshopComponent } from './workshop/workshop.component';
 import { HackathonComponent } from './hackathon/hackathon.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { AppRoutingModule } from '../app-routing.module';
 import { ProfileComponent } from './profile/profile.component';
 import { TableModule } from 'primeng/table';
 import { ContestComponent } from './contest/contest.component';
@@ -65,9 +66,7 @@ import { EventRegisterComponent } from './event-register/event-register.componen
     FileUploadModule,
     ToastModule,
     TableModule,
-
-
-    
+    ConfirmPopupModule
   ],
   exports:[EventRoutingModule]
 })

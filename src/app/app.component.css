@@ -177,3 +177,38 @@ main{
     width: 100%;
     height: 60px;
   }
+
+  /* coming soon */
+  /* For mobile devices (portrait) */
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+  .coming-soon {
+    display: block;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  .main-content {
+    display: none;
+  }
+}
+
+/* For tablets (landscape) */
+@media only screen and (min-width: 600px) and (max-width: 1024px) and (orientation: landscape) {
+  .coming-soon {
+    display: block;
+  }
+  .main-content {
+    display: none;
+  }
+}
+
+/* For all other devices (desktop, etc.) */
+@media only screen and (min-width: 1025px) {
+  .coming-soon {
+    display: none;
+  }
+  .main-content {
+    display: block;
+  }
+}

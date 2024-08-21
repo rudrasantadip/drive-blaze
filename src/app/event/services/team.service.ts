@@ -45,12 +45,14 @@ public hasaTeam(userName:string):Observable<any>
 
 
 //function to get team info by teamcode
-public getTeamByCode(teamCode:string):Observable<Team>
+public getTeamByUserName(username:string):Observable<Team>
 {
   let apiParams = new HttpParams()
-  .set('teamcode',teamCode);
+  .set('username',username);
   return this.http.get<Team>(`${this.apiUrl}/info`,{params:apiParams});
 }
+
+
 
 
 //function to submit application
@@ -74,6 +76,14 @@ public getMemberDesignation(username:string):Observable<any>
   let apiParams = new HttpParams()
   .set('username',username);
   return this.http.get(`${this.memberUrl}/designation`,{params:apiParams})
+}
+
+//function to get idea file
+public getIdeaFile(teamcode:string)
+{
+  let apiParams = new HttpParams()
+  .set('teamcode',teamcode);
+  return this.http.get(`${this.apiUrl}/idea`,{params:apiParams,responseType: 'blob' });
 }
 
 

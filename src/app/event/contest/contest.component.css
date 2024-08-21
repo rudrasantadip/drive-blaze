@@ -67,22 +67,47 @@
     color: #ddd;
   }
   
-  .event >button {
-    position: absolute;
-    bottom: 2%;
-    text-align: center;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
+  .glass-button {
+    display: block;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    outline: none;
   }
   
-  button:hover {
-    background-color: #0056b3;
+  .glass-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
   }
+  
+  /* Shining animation */
+  .glass-button::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.2) 100%);
+    transform: rotate(30deg);
+    transition: all 0.6s ease-in-out;
+    pointer-events: none;
+  }
+  
+  .glass-button:hover::before {
+    top: 0;
+    left: 100%;
+  }
+  
   
   .event::before {
     content: '';

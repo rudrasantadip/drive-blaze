@@ -15,19 +15,29 @@ export class HomeComponent {
     this.registrationForm = this.fb.group({
       teamName: ['', Validators.required],
       members: this.fb.array([
-        this.createMemberFormGroup(),
-        this.createMemberFormGroup()
+        this.createCompulsoryMemberFormGroup(), // Member 1: Compulsory
+        this.createOptionalMemberFormGroup()   // Member 2: Optional
       ])
     });
   }
 
-  createMemberFormGroup(): FormGroup {
+  createCompulsoryMemberFormGroup(): FormGroup {
     return this.fb.group({
       fullName: ['', Validators.required],
       collegeName: ['', Validators.required],
       emailId: ['', [Validators.required, Validators.email]],
       mobileNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       enrollmentNumber: ['', Validators.required]
+    });
+  }
+
+  createOptionalMemberFormGroup(): FormGroup {
+    return this.fb.group({
+      fullName: [''],
+      collegeName: [''],
+      emailId: ['', Validators.email],
+      mobileNumber: ['', Validators.pattern('^[0-9]{10}$')],
+      enrollmentNumber: ['']
     });
   }
 

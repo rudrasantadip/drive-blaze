@@ -14,6 +14,7 @@ export class EventComponent {
 
   goto(routerlink:string)
   {
-    this.router.navigate([routerlink]);
+    alert('All events will be coming soon')
+    // this.router.navigate([routerlink]);
   }
 }

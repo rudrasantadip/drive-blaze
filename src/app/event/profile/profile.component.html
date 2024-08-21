@@ -2,8 +2,12 @@
   <div class="header">
     <h1>
       <span class="welcome"> Welcome </span>
-      <span class="user"> {{userName?userName:'User'}} </span>
-      <i (click)="logout()" class="pi pi-power-off logout" style="font-size: 2rem;margin-left: 6px;"></i>
+      <span class="user"> {{ userName ? userName : "User" }} </span>
+      <i
+        (click)="logout()"
+        class="pi pi-power-off logout"
+        style="font-size: 2rem; margin-left: 6px"
+      ></i>
     </h1>
 
     <div class="menu">
@@ -56,8 +60,7 @@
             (click)="onTeamJoin()"
             style="text-align: center"
             class="raised-button"
-            [disabled]="teamJoin.fullName==''
-            || teamJoin.teamCode==''"
+            [disabled]="teamJoin.fullName == '' || teamJoin.teamCode == ''"
           >
             Join
           </button>
@@ -150,24 +153,25 @@
         </div>
 
         <div class="display">
-          <p-toast></p-toast>
           <!-- Application submission -->
-          <form (ngSubmit)="onSubmit()"  
-          id="submit-application"
-          class="submit-application" 
-          enctype="multipart/form-data"
-          *ngIf="submitApplication">
+          <form
+            (ngSubmit)="onSubmit()"
+            id="submit-application"
+            class="submit-application"
+            enctype="multipart/form-data"
+            *ngIf="submitApplication"
+          >
             <!-- Team info -->
             <div class="team-info">
               <div class="p-inputgroup">
                 <span class="p-inputgroup-addon">
                   <i class="pi pi-user"></i>
                 </span>
-                <input 
-                name="leadername"
-                pInputText 
-                placeholder="Leader Name" 
-                [(ngModel)]="application.leaderName"
+                <input
+                  name="leadername"
+                  pInputText
+                  placeholder="Leader Name"
+                  [(ngModel)]="application.leaderName"
                 />
               </div>
 
@@ -175,11 +179,11 @@
                 <span class="p-inputgroup-addon">
                   <i class="pi pi-users"></i>
                 </span>
-                <input 
-                name="teamname"
-                pInputText 
-                placeholder="Team Name" 
-                [(ngModel)]="application.teamName"
+                <input
+                  name="teamname"
+                  pInputText
+                  placeholder="Team Name"
+                  [(ngModel)]="application.teamName"
                 />
               </div>
 
@@ -187,15 +191,13 @@
                 <span class="p-inputgroup-addon">
                   <i class="pi pi-key"></i>
                 </span>
-                <input 
-                name="teamcode"
-                pInputText 
-                placeholder="Team Code" 
-                [(ngModel)]="application.teamCode"
+                <input
+                  name="teamcode"
+                  pInputText
+                  placeholder="Team Code"
+                  [(ngModel)]="application.teamCode"
                 />
               </div>
-
-              
             </div>
 
             <div class="team-info">
@@ -203,17 +205,18 @@
                 <span class="p-inputgroup-addon">
                   <i class="pi pi-key"></i>
                 </span>
-                <input 
-                name="collegename"
-                [(ngModel)]="application.collegeName"
-                pInputText 
-                placeholder="College/University Name" />
+                <input
+                  name="collegename"
+                  [(ngModel)]="application.collegeName"
+                  pInputText
+                  placeholder="College/University Name"
+                />
               </div>
             </div>
 
             <!-- Member info -->
             <!-- File upload -->
-            <div class="file-upload">
+            <div class="file-upload" *ngIf="!isIdeaSubmitted">
               <div class="file-input-container">
                 <label class="file-label" for="file">Choose file:</label>
                 <input
@@ -226,15 +229,37 @@
               </div>
             </div>
 
+            <div class="already-submitted" *ngIf="isIdeaSubmitted">
+              <h2>Application already submitted.</h2>
+              <a *ngIf="fileUrl" [href]="fileUrl" download="filename.pdf"
+                >Download PDF</a
+              >
+
+              <button
+              *ngIf="isIdeaSubmitted"
+              class="raised-button"
+              (click)="checkApplicationStatus()"
+            >
+            Check Status
+            </button>
+            </div>
+
             <button
-            [disabled]="application.leaderName==''
-            || application.collegeName=='' || application.teamName=='' 
-            || application.teamCode==''"
-            type="submit"
-             class="submit-button raised-button">
+              *ngIf="!isIdeaSubmitted"
+              [disabled]="
+                application.leaderName == '' ||
+                application.collegeName == '' ||
+                application.teamName == '' ||
+                application.teamCode == ''
+              "
+              type="submit"
+              class="submit-button raised-button"
+            >
               Submit Application
             </button>
           </form>
+
+    
 
           <!-- Timeline starts-->
 
@@ -264,9 +289,7 @@
                   width="200"
                   class="shadow-2"
                 />
-                <p>
-                 
-                </p>
+                <p></p>
                 <button
                   pButton
                   label="Read more"
@@ -291,22 +314,31 @@
               </thead>
               <tbody>
                 <tr *ngFor="let member of team.members">
-                  <td>{{member.memberId}}</td>
-                  <td>{{member.memberName}}</td>
-                  <td>{{member.username}}</td>
-                  <td>{{member.memberDesignation}}</td>
+                  <td>{{ member.memberId }}</td>
+                  <td>{{ member.memberName }}</td>
+                  <td>{{ member.username }}</td>
+                  <td>{{ member.memberDesignation }}</td>
                   <td>
-                    <p-button icon="pi pi-times" [disabled]="memberDesignation=='Member'" (click)="removeMember(member)" severity="danger"></p-button>
+                    <!-- toast section -->
+                    <p-toast></p-toast>
+                    <p-confirmPopup></p-confirmPopup>
+                    <p-button
+                      icon="pi pi-times"
+                      [disabled]="memberDesignation == 'Member'"
+                      (click)="removeMember(member, $event)"
+                      severity="danger"
+                    ></p-button>
                   </td>
                 </tr>
-                
               </tbody>
             </table>
 
             <div class="team-information">
-              <span>Team Code: {{team.teamCode}}</span>
+              <span>Team Code: {{ team.teamCode }}</span>
               <span>Team Name: Drive Blaze</span>
-              <span>You can have {{3-team.members.length}} member(s) more</span>
+              <span
+                >You can have {{ 3 - team.members.length }} member(s) more</span
+              >
             </div>
           </div>
 
@@ -315,41 +347,42 @@
           <div class="over-view" *ngIf="overview">
             <h2>Guidelines for participants</h2>
             <ul>
+              <li>Every Team must have a proper identifiable name.</li>
 
               <li>
-                Every Team must have a proper identifiable name.
+                Every Team must contain a minimum of 1 and a maxmimum of 3
+                members.
               </li>
 
               <li>
-                Every Team must contain a minimum of 1 and a maxmimum of 3 members.
+                The leader of the team will be responsible for adding or
+                removing members from the team.
               </li>
 
               <li>
-                The leader of the team will be responsible for adding or removing members from the team.
+                Every team will get a chance to submit their idea presentation
+                only once, therefore please be careful.
               </li>
 
               <li>
-                Every team will get a chance to submit their idea presentation only once, therefore please be careful.
+                Registrations for the hackathon will begin from 20th August
+                2024.
               </li>
 
               <li>
-                Registrations for the hackathon will begin from 20th August 2024.
+                To join a team you must have the proper team code, for that
+                given team.
               </li>
 
               <li>
-                To join a team you must have the proper team code, for that given team.
-              </li>
-
-              <li>
-                Team Code will be available to members, who can therefore share it with others.
+                Team Code will be available to members, who can therefore share
+                it with others.
               </li>
 
               <li>
                 Team Leader shall recieve a teamcode upon creating a team.
               </li>
             </ul>
-       
-
           </div>
         </div>
       </div>
